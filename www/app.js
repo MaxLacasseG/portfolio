@@ -8,4 +8,6 @@ app.use(express.static(__dirname + "/public"));
 
 projetCtrl(app);
 
-app.listen(8000);
+app.listen(8000,()=>{
+    console.log('Listening on 8000');
+});
