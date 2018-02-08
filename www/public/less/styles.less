@@ -1,6 +1,138 @@
-@import url('reset.css');
-@coul1:#FFFFFF;
+@import 'reset.css';
+* {
+    box-sizing: border-box;
+}
+@coulBG:#232427;
+@coulBase :#a9fcf6;
+@coulAccent: #ff0037;
 
+@fontBase: 'Barlow Condensed', sans-serif;
+@fontAccent: 'Barlow Condensed', sans-serif;
+@fontTitre: 'Barlow Condensed', sans-serif;
+
+.tailleFont(@taille) {
+    @remVal : @taille;
+    @pxVal: (@taille * 10);
+    font-size:~"@{pxVal}px";
+    font-size:~"@{remVal}rem";
+}
+
+//Gestion de la typographie
+html {
+    font-size: 62.5%;
+    color: @coulBase;
+    background-color: @coulBG;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: @fontBase;
+    color: @coulBase;
+}
+
+p,
+input,
+label,
+textarea,
+div,
+li,
+a {
+    .tailleFont(1);
+    font-family: @fontBase;
+}
+
+h1 {
+    .tailleFont(7);
+    font-weight: 500;
+    letter-spacing: -0.15rem;
+    font-family: @fontTitre;
+}
+
+h2 {
+    .tailleFont(5);
+    font-weight: 100;
+}
+
+h3 {
+    .tailleFont(3)
+}
+
+h4 {
+    .tailleFont(1)
+}
+
+h5 {
+    .tailleFont(0.8)
+}
+
+h6 {
+    .tailleFont(0.7)
+}
+
+//Mise en page générale
 body{
+    background-color: @coulBG;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    & .conteneurPrinc.accueil{
+        flex: 1 1 100%; 
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        & header{
+            flex:1 1 auto;
+            width: 70vw;
+            max-height: 70vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            & .logoGroupe{
+                flex:1 1 auto;
+            }
+            & .navPrinc{
+                //DEV
+                & img{display: none};
 
+                & ul{
+                    display: flex;
+                    flex: 1 1 auto;
+                    width:30vw;
+                    height: 30vh;
+                    & li{
+                        flex: 1 1 20%;
+                        margin: 0 0.4em;
+                        background-color:rgb(36, 34, 34); 
+                        &:last-of-type{
+                            display: flex;
+                            flex-direction: column;
+                            justify-content: center;
+                            align-items: center;
+                            & p{
+                                .tailleFont(2);
+                                color: @coulAccent;
+                            }
+                        }
+                    }
+                }
+
+
+            }
+
+        }       
+    }
+    & footer{
+        & p{
+            align-self: flex-end;
+            .tailleFont(1);
+            color: grey
+        }
+    }
+    
 }
