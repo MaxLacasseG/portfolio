@@ -1,3 +1,4 @@
 recherche/testthree/node_modules/
 
-./www/public/css/styles.css
+www/public/css/styles.css
+www/node_modules/
