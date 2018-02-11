@@ -8,6 +8,9 @@
     src: url('../font/Signoria Regular.ttf');
 }
 
+@tablette: ~"screen and (min-width: 380px)";
+@ecran: ~"screen and (min-width: 1024px)";
+
 @coulBG:#232427;
 @coulBase :#a9fcf6;
 @coulAccent: #ff0037;
@@ -119,11 +122,14 @@ body{
                 justify-content: center;
                 align-items: center;
                 & h1.logo{
-                    .tailleFont(3);
+                    .tailleFont(2.5);
                     color: white;
                     text-transform: uppercase;
                     letter-spacing: 0.3em;
                     text-align: center;
+                    @media @tablette{
+                        .tailleFont(3);
+                    }
                 }
                 
             }
@@ -139,11 +145,27 @@ body{
                     display: flex;
                     flex: 1 1 auto;
                     justify-content: space-around;
-                    
-                    & li{
+                    flex-direction: column;
+
+                    @media @tablette{
+                        display: flex;
+                        flex-direction: row;
                         flex: 1 1 auto;
+                        justify-content: space-around;
+                    }
+                    & li{
+                        flex: 1 0 100%;
                         margin: 0 0.25em;
                         text-align: center;
+                        flex-flow: wrap;
+                        margin: 1em;
+
+                        @media @tablette{
+                            flex-flow: nowrap;
+                            flex: 1 1 auto;
+                            margin: 0 0.25em;
+                            text-align: center;
+                        }
                         & a, & a:visited, & a:active{
                             .tailleFont(2);
                             transition: all 250ms;
