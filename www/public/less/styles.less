@@ -2,13 +2,19 @@
 * {
     box-sizing: border-box;
 }
+
+@font-face {
+    font-family: Signoria;
+    src: url(../font/Signoria Regular.ttf);
+}
+
 @coulBG:#232427;
 @coulBase :#a9fcf6;
 @coulAccent: #ff0037;
 
-@fontBase: 'Barlow Condensed', sans-serif;
-@fontAccent: 'Barlow Condensed', sans-serif;
-@fontTitre: 'Barlow Condensed', sans-serif;
+@fontBase: 'Signoria', sans-serif;
+@fontAccent: 'Signoria', sans-serif;
+@fontTitre: 'Signoria', sans-serif;
 
 .tailleFont(@taille) {
     @remVal : @taille;
@@ -91,10 +97,23 @@ body{
             width: 70vw;
             max-height: 70vh;
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
             & .logoGroupe{
                 flex:1 1 auto;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                & h1.logo{
+                    .tailleFont(3);
+                    color: white;
+                    text-transform: uppercase;
+                    letter-spacing: 0.3em;
+                    text-align: center;
+                }
+                
             }
             & .navPrinc{
                 //DEV
@@ -104,19 +123,16 @@ body{
                     display: flex;
                     flex: 1 1 auto;
                     width:30vw;
-                    height: 30vh;
                     & li{
-                        flex: 1 1 20%;
+                        flex: 1 1 25%;
                         margin: 0 0.4em;
-                        background-color:rgb(36, 34, 34); 
-                        &:last-of-type{
-                            display: flex;
-                            flex-direction: column;
-                            justify-content: center;
-                            align-items: center;
-                            & p{
-                                .tailleFont(2);
-                                color: @coulAccent;
+                        & a, & a:visited, & a:active{
+                            .tailleFont(2);
+                            color: #434446;
+                            text-transform: uppercase;
+                            text-decoration: none;
+                            &:hover{
+                                color: #E81A1A;
                             }
                         }
                     }
