@@ -11,7 +11,7 @@
 @coulBG:#232427;
 @coulBase :#a9fcf6;
 @coulAccent: #ff0037;
-@coulNav:#434446;
+@coulNav:#bbbbbb;
 
 @fontBase: 'Signoria', sans-serif;
 @fontAccent: 'Signoria', sans-serif;
@@ -87,13 +87,18 @@ body{
     display: flex;
     flex-direction: column;
     & .fondAnim{
-        background:radial-gradient(circle at center, rgb(56, 56, 56) 0%, rgba(0,0,0,0) 45%)black;
+        background:radial-gradient(circle at center, rgba(51, 51, 51,0.8) 0%, rgba(0,0,0,0) 45%), url('../img/bg.png');
         position: fixed;
         height: 100vh;
         width: 100vw;
         z-index: -1;
+        & *{
+            width: 100vw;
+            height: 100vh;
+        }
     }
     & .conteneurPrinc.accueil{
+        background-color: rgba(0, 0, 0, 0.2);
         flex: 1 1 100%; 
         display: flex;
         flex-direction: column;
@@ -141,10 +146,12 @@ body{
                         text-align: center;
                         & a, & a:visited, & a:active{
                             .tailleFont(2);
+                            transition: all 250ms;
                             color: @coulNav;
                             text-transform: uppercase;
                             text-decoration: none;
                             &:hover{
+                                text-shadow:  0 0 4px rgb(232, 74, 26);
                                 color: #E81A1A;
                             }
                         }
