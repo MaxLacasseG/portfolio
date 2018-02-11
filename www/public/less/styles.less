@@ -115,14 +115,25 @@ body{
             flex-direction: column;
             justify-content: center;
             align-items: center;
+           
             & .logoGroupe{
-                flex:1 1 auto;
+                flex:0 1 auto;
                 display: flex;
                 flex-direction: column;
-                justify-content: center;
+                justify-content: flex-start;
                 align-items: center;
+                @media @tablette{
+                    flex: 1 1 auto;
+                    justify-content: center;
+                }
+                & img{
+                    max-height: 30vh;
+                    @media @tablette{
+                        max-height: 100%;
+                    }
+                }
                 & h1.logo{
-                    .tailleFont(2.5);
+                    .tailleFont(2.3);
                     color: white;
                     text-transform: uppercase;
                     letter-spacing: 0.3em;
