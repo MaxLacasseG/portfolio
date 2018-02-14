@@ -10,16 +10,17 @@
 
 @tablette: ~"screen and (min-width: 380px)";
 @ecran: ~"screen and (min-width: 1024px)";
-
-@coulBG:#232427;
+@coulBG: #232427;
 @coulBase :#a9fcf6;
 @coulAccent: #ff0037;
-@coulNav:#bbbbbb;
-
-@fontBase: 'Signoria', sans-serif;
-@fontAccent: 'Signoria', sans-serif;
-@fontTitre: 'Signoria', sans-serif;
-
+@coulNav2: #ff9100;
+@coulNav: #808080;
+@fontBase: 'Signoria',
+sans-serif;
+@fontAccent: 'Signoria',
+sans-serif;
+@fontTitre: 'Signoria',
+sans-serif;
 .tailleFont(@taille) {
     @remVal : @taille;
     @pxVal: (@taille * 10);
@@ -83,129 +84,260 @@ h6 {
     .tailleFont(0.7)
 }
 
+a {
+    text-decoration: none;
+}
+
+.gabarit,
+.desactive {
+    display: none;
+}
+
 //Mise en page générale
-body{
+body {
     height: 100vh;
     width: 100vw;
     display: flex;
     flex-direction: column;
-    & .fondAnim{
-        background:radial-gradient(circle at center, rgba(51, 51, 51,0.8) 0%, rgba(0,0,0,0) 45%), url('../img/bg.png');
+    & .fondAnim {
+        background: radial-gradient(circle at center, rgba(51, 51, 51, 0.8) 0%, rgba(0, 0, 0, 0) 45%), url('../img/bg.png');
         position: fixed;
         height: 100vh;
         width: 100vw;
         z-index: -1;
-        & *{
+        & * {
             width: 100vw;
             height: 100vh;
         }
     }
-    & .conteneurPrinc.accueil{
+    & .conteneurPrinc.accueil {
         background-color: rgba(0, 0, 0, 0.2);
-        flex: 1 1 100%; 
+        flex: 1 1 100%;
         display: flex;
         flex-direction: column;
         justify-content: space-evenly;
         align-items: center;
-        & header{
-            flex:1 1 auto;
+        & header {
+            flex: 1 1 auto;
             width: 80vw;
             max-height: 80vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-           
-            & .logoGroupe{
-                flex:0 1 auto;
+            & .logoGroupe {
+                flex: 0 1 auto;
                 display: flex;
                 flex-direction: column;
                 justify-content: flex-start;
                 align-items: center;
-                @media @tablette{
+                @media @tablette {
                     flex: 1 1 auto;
                     justify-content: center;
                 }
-                & img{
+                & img {
                     max-height: 30vh;
-                    @media @tablette{
+                    @media @tablette {
                         max-height: 100%;
                     }
                 }
-                & h1.logo{
+                & h1.logo {
                     .tailleFont(2.3);
                     color: white;
                     text-transform: uppercase;
                     letter-spacing: 0.3em;
                     text-align: center;
-                    @media @tablette{
+                    @media @tablette {
                         .tailleFont(3);
                     }
                 }
-                
             }
-            & .navPrinc{
+            & .navPrinc {
                 //DEV
-                & img{display: none};
+                & img {
+                    display: none
+                }
+                ;
                 flex: 1 1 auto;
                 width: 100%;
                 display: flex;
                 justify-content: center;
                 align-items: center;
-                & ul{
+                & ul {
                     display: flex;
                     flex: 1 1 auto;
                     justify-content: space-around;
                     flex-direction: column;
-
-                    @media @tablette{
+                    @media @tablette {
                         display: flex;
                         flex-direction: row;
                         flex: 1 1 auto;
                         justify-content: space-around;
                     }
-                    & li{
+                    & li {
                         flex: 1 0 100%;
                         margin: 0 0.25em;
                         text-align: center;
                         flex-flow: wrap;
                         margin: 1em;
-
-                        @media @tablette{
+                        @media @tablette {
                             flex-flow: nowrap;
                             flex: 1 1 auto;
                             margin: 0 0.25em;
                             text-align: center;
                         }
-                        & a, & a:visited, & a:active{
+                        & a,
+                        & a:visited,
+                        & a:active {
                             .tailleFont(2);
                             transition: all 250ms;
                             color: @coulNav;
                             text-transform: uppercase;
                             text-decoration: none;
-                            &:hover{
-                                text-shadow:  0 0 4px rgb(232, 74, 26);
+                            &:hover {
+                                text-shadow: 0 0 4px rgb(232, 74, 26);
                                 color: #E81A1A;
                             }
                         }
                     }
                 }
-
-
             }
-
-        } 
-
-        & footer{
-            & p{
+        }
+        & footer {
+            & p {
                 align-self: flex-end;
                 .tailleFont(1);
                 letter-spacing: 0.1em;
                 color: @coulNav;
             }
-        }      
+        }
     }
-    
-    
-    
+    & .conteneurPrinc.projets {
+        background-color: rgba(0, 0, 0, 0.2);
+        flex: 1 1 100%;
+        display: flex;
+        & * {
+            //border: mediumvioletred 1px solid;
+        }
+        & section.listeProjets {
+            flex: 1 1 15%;
+            min-width: 15vw;
+            padding-top: 5rem;
+            display: flex;
+            flex-direction: column;
+            & nav {
+                flex: 1 1 80%;
+                & .catProjets {
+                    text-transform: uppercase;
+                    text-decoration: underline;
+                    color: white;
+                    padding-left: 3rem;
+                    .tailleFont(2.5);
+                }
+                & ul {
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: space-around;
+                    flex: 1 1 50%;
+                    & li {
+                        display: flex;
+                        justify-content: flex-start;
+                        padding: 1rem 0 0.5rem 5rem;
+                        flex: 0 1 auto;
+                        width: 75%;
+                        &.courant {
+                            border-bottom: solid 2px @coulNav2;
+                            & a {
+                                color: @coulNav2;
+                            }
+                        }
+                        & a {
+                            .tailleFont(1.8);
+                            &,
+                            &:visited,
+                            &:active {
+                                color: @coulNav;
+                            }
+                        }
+                    }
+                }
+            }
+            & .retourAccueil {
+                border-top: white solid 3px;
+                flex: 1 0 auto;
+                & .logoConteneur {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    padding: 1em 3em;
+                    & a {
+                        flex: 1 1 100%;
+                    }
+                }
+            }
+        }
+        & section.projet {
+            border: 1px solid greenyellow;
+            display: flex;
+            flex-direction: column;
+            padding-left: 10rem;
+            & div.imgGroupe {
+                &>* {
+                    border: navy 1px solid;
+                } //border: 1px solid tomato;
+                flex: 1 1 60%;
+                display: flex;
+                & nav.imgGroupe {
+                    flex: 1 0 10%;
+                    display: flex;
+                    & ul {
+                        flex: 1 1 auto;
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: flex-end;
+                        align-items: flex-end;
+                        padding: 1rem;
+                        & li {
+                            width: 24px;
+                            border-radius: 100%;
+                            height: 24px;
+                            border: 2px solid @coulAccent;
+                            margin: 0.5rem;
+                            &.courant {
+                                background-color: @coulAccent;
+                            }
+                        }
+                    }
+                }
+                & .imgConteneur {
+                    flex: 1 1 65%;
+                    display: flex;
+                    padding: 5rem 5rem 1rem 1rem;
+                    align-items: flex-end;
+                    & img {
+                        max-width: 100%;
+                        max-height: 100%;
+                        flex:auto;
+                    }
+                }
+                & aside {
+                    flex: 1 0 25%;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: flex-end;
+                    & p, & a{
+                        .tailleFont(1.25);
+                        color:@coulNav;
+                    }
+
+                    & > div{
+                        padding: 1em;
+                    }
+                }
+            }
+            & .desc {
+                flex: 1 1 40%;
+            }
+        }
+    }
 }
