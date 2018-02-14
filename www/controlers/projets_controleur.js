@@ -22,7 +22,7 @@ module.exports = (app) => {
         res.render('web', {data:data});
     });
 
-    app.get('/jeuxvideo', (req, res) => {
+    app.get('/jeux-video', (req, res) => {
         let data = {};
         data.infosPage = {
             title: "Maxime Lacasse Germain | Projets de jeux vidéos",
@@ -30,7 +30,7 @@ module.exports = (app) => {
             robots: "INDEX, FOLLOW",
             keywords: "Lorem"
         };
-        res.render('jeuxvideo', {data:data});
+        res.render('jeux-video', {data:data});
     });
 
     app.get('/multimedias', (req, res) => {
