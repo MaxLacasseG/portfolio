@@ -277,14 +277,10 @@ body {
             }
         }
         & section.projet {
-            border: 1px solid greenyellow;
             display: flex;
             flex-direction: column;
             padding-left: 10rem;
             & div.imgGroupe {
-                &>* {
-                    border: navy 1px solid;
-                } //border: 1px solid tomato;
                 flex: 1 1 60%;
                 display: flex;
                 & nav.imgGroupe {
@@ -312,7 +308,7 @@ body {
                 & .imgConteneur {
                     flex: 1 1 65%;
                     display: flex;
-                    padding: 5rem 5rem 1rem 1rem;
+                    padding: 5rem 3rem 1rem 1rem;
                     align-items: flex-end;
                     & img {
                         max-width: 100%;
@@ -325,18 +321,49 @@ body {
                     display: flex;
                     flex-direction: column;
                     justify-content: flex-end;
-                    & p, & a{
+                    & p{
                         .tailleFont(1.25);
                         color:@coulNav;
+                        padding: 0.5rem;
+                        &.icone{
+                            flex: 1 1 5%;
+                            min-width: 20%;
+                        }
+                        &:not(.icone){
+                            flex: 1 1 95%;
+                        }
+                    }
+                    & a{
+                        .tailleFont(1.25);
+                        color:@coulNav;
+                        &:hover{
+                            text-decoration: underline;
+                            color: @coulNav2;
+                        }
                     }
 
                     & > div{
                         padding: 1em;
+                        display: flex;
+                        align-items: baseline;
                     }
                 }
             }
             & .desc {
                 flex: 1 1 40%;
+                padding-top: 3rem;
+                padding-left: calc(10%+1rem);
+                padding-right: calc(25%+5rem);
+                & .titre{
+                    color: @coulAccent;
+                    .tailleFont(4);
+                }
+                & .descTxt{
+                    .tailleFont(1);
+                    line-height: 2rem;
+                    color: white;
+                    text-align: justify;
+                }
             }
         }
     }
