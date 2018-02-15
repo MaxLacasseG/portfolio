@@ -2,3 +2,6 @@ recherche/testthree/node_modules/
 
 www/public/css/styles.css
 www/node_modules/
+
+www/data/*
+!www/data/_donneesTest.js
