@@ -1,4 +1,7 @@
 /*jshint esversion: 6 */
+var mongoose = require('mongoose')
+var Membre = require('../modeles/projets_modele');
+
 module.exports = (app) => {
     app.get('/', (req, res) => {
         let data = {};
