@@ -2,18 +2,11 @@
     <nav>
         <h3 class="catProjets">Web</h3>
         <ul>
-            <li class="gabarit desactive">
-                <a href="#">Projet 1</a>
-            </li>
-            <li class="courant">
-                <a href="#">Projet 2</a>
-            </li>
+            <%for(projet of data.projets){%>
             <li>
-                <a href="#">Projet 3</a>
+                <a class="navProjet" data-id="<%=projet._id%>" href="#"><%= projet.titre%></a>
             </li>
-            <li>
-                <a href="#">Projet 4</a>
-            </li>
+           <%}%>
         </ul>
     </nav>
     <div class="retourAccueil">

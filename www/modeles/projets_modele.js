@@ -1,6 +1,5 @@
-let bdd = require('mongoose');
-let Schema = bdd.Schema;
-let ProjetModele = new Schema({
+let BDD = require('mongoose');
+let ProjetModele = BDD.Schema({
     "titre": {type:String, required:true},
     "titre-court": {type:String, required:true},
     "date-creation":Date,
@@ -13,5 +12,5 @@ let ProjetModele = new Schema({
     "temps": Number
 });
 
-Projet = bdd.model('Projet', ProjetModele);
+let Projet = BDD.model('Projet', ProjetModele);
 module.exports = Projet;

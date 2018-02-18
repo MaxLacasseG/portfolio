@@ -1,6 +1,6 @@
 /*jshint esversion: 6 */
-var mongoose = require('mongoose')
-var Membre = require('../modeles/projets_modele');
+var BDD = require('mongoose')
+var ProjetColl = require('../modeles/projets_modele');
 
 module.exports = (app) => {
     app.get('/', (req, res) => {
@@ -11,18 +11,33 @@ module.exports = (app) => {
             robots: "INDEX, FOLLOW",
             keywords: "Web, jeux vidéo, portfolio"
         };
-        res.render('index', {data: data});
+        res.render('index', {
+            data: data
+        });
     });
 
     app.get('/web', (req, res) => {
         let data = {};
-        data.infosPage = {
-            title: "Maxime Lacasse Germain | Projets web",
-            description: "Lorem",
-            robots: "INDEX, FOLLOW",
-            keywords: "lorem"
-        };
-        res.render('web', {data:data});
+        ProjetColl.find({categorie:"web"},(err, resultat) => {
+            data.projets = resultat;
+
+            data.infosPage = {
+                title: "Maxime Lacasse Germain | Projets web",
+                description: "Lorem",
+                robots: "INDEX, FOLLOW",
+                keywords: "lorem"
+            };
+
+            res.render('web', {
+                data: data
+            });
+        });
+    });
+
+    app.get('/recuperer/:id', (req, res)=>{
+        ProjetColl.findById(req.params.id, (err, resultat)=>{
+            res.send(resultat);
+        });
     });
 
     app.get('/jeux-video', (req, res) => {
@@ -33,7 +48,9 @@ module.exports = (app) => {
             robots: "INDEX, FOLLOW",
             keywords: "Lorem"
         };
-        res.render('jeux-video', {data:data});
+        res.render('jeux-video', {
+            data: data
+        });
     });
 
     app.get('/multimedias', (req, res) => {
@@ -44,7 +61,9 @@ module.exports = (app) => {
             robots: "INDEX, FOLLOW",
             keywords: "Lorem"
         };
-        res.render('multimedia', {data:data});
+        res.render('multimedia', {
+            data: data
+        });
     });
 
     app.get('/bio', (req, res) => {
@@ -55,6 +74,8 @@ module.exports = (app) => {
             robots: "INDEX, FOLLOW",
             keywords: "Lorem"
         };
-        res.render('bio',{data:data});
+        res.render('bio', {
+            data: data
+        });
     });
 }
