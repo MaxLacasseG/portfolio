@@ -18,7 +18,9 @@ module.exports = (app) => {
 
     app.get('/web', (req, res) => {
         let data = {};
-        ProjetColl.find({categorie:"web"},(err, resultat) => {
+        ProjetColl.find({
+            categorie: "web"
+        }, (err, resultat) => {
             data.projets = resultat;
 
             data.infosPage = {
@@ -34,22 +36,28 @@ module.exports = (app) => {
         });
     });
 
-    app.get('/recuperer/:id', (req, res)=>{
-        ProjetColl.findById(req.params.id, (err, resultat)=>{
+    app.get('/recuperer/:id', (req, res) => {
+        ProjetColl.findById(req.params.id, (err, resultat) => {
             res.send(resultat);
         });
     });
 
     app.get('/jeux-video', (req, res) => {
         let data = {};
-        data.infosPage = {
-            title: "Maxime Lacasse Germain | Projets de jeux vidéos",
-            description: "Lorem",
-            robots: "INDEX, FOLLOW",
-            keywords: "Lorem"
-        };
-        res.render('jeux-video', {
-            data: data
+        ProjetColl.find({
+            categorie: "jeux-video"
+        }, (err, resultat) => {
+            data.projets = resultat;
+
+            data.infosPage = {
+                title: "Maxime Lacasse Germain | Projets de jeux vidéos",
+                description: "Lorem",
+                robots: "INDEX, FOLLOW",
+                keywords: "Lorem"
+            };
+            res.render('jeux-video', {
+                data: data
+            });
         });
     });
 
