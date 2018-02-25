@@ -22,7 +22,7 @@ module.exports = (app) => {
             categorie: "web"
         }, (err, resultat) => {
             data.projets = resultat;
-
+            console.log(resultat)
             data.infosPage = {
                 title: "Maxime Lacasse Germain | Projets web",
                 description: "Lorem",
