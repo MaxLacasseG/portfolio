@@ -11,7 +11,7 @@
 @tablette: ~"screen and (min-width: 380px)";
 @ecran: ~"screen and (min-width: 1024px)";
 @coulBG: #232427;
-@coulBase :#a9fcf6;
+@coulBase :white;
 @coulAccent: #ff0037;
 @coulNav2: #ff9100;
 @coulNav: #808080;
@@ -73,7 +73,10 @@ h3 {
 }
 
 h4 {
-    .tailleFont(1)
+    .tailleFont(1.25);
+    text-decoration: underline;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
 }
 
 h5 {
@@ -222,6 +225,7 @@ body {
         & section.listeProjets {
             flex: 1 1 15%;
             min-width: 15vw;
+            max-width: 20vw;
             padding-top: 5rem;
             display: flex;
             flex-direction: column;
@@ -245,12 +249,6 @@ body {
                         padding: 1rem 0 0.5rem 5rem;
                         flex: 0 1 auto;
                         width: 75%;
-                        &.courant {
-                            border-bottom: solid 2px @coulNav2;
-                            & a {
-                                color: @coulNav2;
-                            }
-                        }
                         & a {
                             .tailleFont(1.8);
                             &,
@@ -259,12 +257,18 @@ body {
                                 color: @coulNav;
                             }
                         }
+                        &.courant {
+                            border-bottom: solid 2px @coulNav2;
+                            & a {
+                                color: @coulNav2;
+                            }
+                        }
                     }
                 }
             }
             & .retourAccueil {
                 border-top: white solid 3px;
-                flex: 1 0 auto;
+                width:20vw;
                 & .logoConteneur {
                     display: flex;
                     justify-content: center;
@@ -272,6 +276,7 @@ body {
                     padding: 1em 3em;
                     & a {
                         flex: 1 1 100%;
+                        max-width: 65%;
                     }
                 }
             }
@@ -363,6 +368,74 @@ body {
                     line-height: 2rem;
                     color: white;
                     text-align: justify;
+                }
+            }
+            & section{
+                display: none;
+                &.demarche{
+                    display: block;
+                }
+                & p {
+                    color: white;
+                    .tailleFont(1.5);
+                    margin: 1em 0;
+                }
+                
+                & div.compConteneur{
+                    width: 100%; /* Full width */
+                    height:10px;
+                    background-color:@coulNav; /* Grey background */
+                    border-radius: 5px;
+                    & div.competence{
+                        border-radius: 5px;
+                        height: 10px;
+                        background-color: #ff9100;
+
+                        &[data-value = '5']{width: 5%;}
+                        &[data-value = '10']{width: 10%;}
+                        &[data-value = '15']{width: 15%;}
+                        &[data-value = '20']{width: 20%;}
+                        &[data-value = '25']{width: 25%;}
+                        &[data-value = '30']{width: 30%;}
+                        &[data-value = '35']{width: 35%;}
+                        &[data-value = '40']{width: 40%;}
+                        &[data-value = '50']{width: 50%;}
+                        &[data-value = '55']{width: 55%;}
+                        &[data-value = '60']{width: 60%;}
+                        &[data-value = '65']{width: 65%;}
+                        &[data-value = '70']{width: 70%;}
+                        &[data-value = '75']{width: 75%;}
+                        &[data-value = '80']{width: 80%;}
+                        &[data-value = '85']{width: 85%;}
+                        &[data-value = '90']{width: 90%;}
+                        &[data-value = '95']{width: 95%;}
+                        &[data-value = '100']{width: 100%;}
+                    }
+                }
+
+                &.parcoursPro{
+                    & ul{
+                        & li{
+                            color: @coulNav2;
+                            .tailleFont(1.5);
+                            margin: 2em;
+                        }
+                    }
+                }
+                &.contact{
+                    & form{
+                        display: flex;
+                        flex-direction: column;
+                        & label{
+                            color: white;
+                        }
+                        & input{
+                            margin-bottom: 1em;
+                            &[type="submit"]{
+                                align-self: flex-start;
+                            }
+                        }
+                    }
                 }
             }
         }
