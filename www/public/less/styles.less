@@ -219,9 +219,6 @@ body {
         background: radial-gradient(circle at center, rgba(51, 51, 51, 0.8) 0%, rgba(0, 0, 0, 0) 45%),url('../img/bg.png');
         flex: 1 1 100%;
         display: flex;
-        & * {
-            //border: mediumvioletred 1px solid;
-        }
         & section.listeProjets {
             flex: 1 1 15%;
             min-width: 15vw;
@@ -255,6 +252,9 @@ body {
                             &:visited,
                             &:active {
                                 color: @coulNav;
+                            }
+                            &:hover{
+                                cursor: pointer;
                             }
                         }
                         &.courant {
@@ -306,6 +306,9 @@ body {
                             margin: 0.5rem;
                             &.courant {
                                 background-color: @coulAccent;
+                            }
+                            &:hover{
+                                cursor: pointer;
                             }
                         }
                     }

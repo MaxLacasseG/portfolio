@@ -1,14 +1,32 @@
+"use strict"
+/** 
+ * Script servant à l'affichage des images de projets et à la navigation de celles-ci
+*/
 window.addEventListener('load', () => {
-
+    //===========================================================
+    //GESTION DE LA NAVIGATION
     let navas = document.querySelectorAll('a.navProjet');
-    for (nava of navas) {
+    let ul = document.querySelector('.listeProjets nav ul');
+    for (let nava of navas) {
         nava.addEventListener('click', (evt) => {
             evt.preventDefault();
+            enleverLienCourant();
+            evt.target.parentNode.classList.add('courant');
             rechercherProjet(evt.target);
         }, false);
     }
-    rechercherProjet(navas[0]);
 
+    //On enleve tous les liens
+    const enleverLienCourant= ()=>{
+        ul.querySelector(".courant").classList.remove("courant");
+    }
+    //On affiche un projet par défaut
+    rechercherProjet(navas[0]);
+    navas[0].parentNode.classList.add('courant');
+
+    //===========================================================
+    //AFFICHAGE DES INFOS DU PROJET LORSQUE SÉLECTIONNÉ VIA AJAX
+    //RÉCUPÉRATION DES INFOS
     function rechercherProjet(lien) {
         let url = "/recuperer/" + lien.dataset.id;
         console.log(url);
@@ -23,7 +41,7 @@ window.addEventListener('load', () => {
         };
         ajax.send();
     }
-
+    //AFFICHAGE DES INFOS
     function affecterResultat(projet) {
         console.log(projet);
         document.querySelector(".desc h3.titre").innerText = projet.titre;
@@ -44,23 +62,23 @@ window.addEventListener('load', () => {
         let liste = parent.querySelectorAll('img:not(.gabarit)');
 
         //On enlève les éléments
-        for(elm of liste){
+        for(let elm of liste){
             parent.removeChild(elm);
         }
 
-       
+        //NAVIGATION DES IMAGES
         let pointsParent = document.querySelector('nav.imgGroupe ul');
         let pointClone = pointsParent.querySelector('li.gabarit');
         let listePoints = pointsParent.querySelectorAll('li:not(.gabarit)');
 
          //On enlève les points
-        for(elm of listePoints){
+        for(let elm of listePoints){
             pointsParent.removeChild(elm);
         }
 
         //On ajoute les images
         let nbImages = 0;
-        for (image of projet.image) {
+        for (let image of projet.image) {
             let img = imgClone.cloneNode();
             img.src = "img/" + image;
             img.dataset.no = nbImages;
@@ -69,13 +87,37 @@ window.addEventListener('load', () => {
 
             //On ajoute les points
             let point = pointClone.cloneNode();
+            point.classList.add("point");
             point.dataset.no = nbImages;
             point.classList.remove('gabarit');
             point.classList.remove('desactive');
             pointsParent.appendChild(point);
+            
+            point.addEventListener('click', (evt)=>{
+                afficherImage(evt.target.dataset.no);
+                enleverPoints();
+                evt.target.classList.add("courant");
+            }, false);
+
             nbImages++;
         }
-        imgCourante =  parent.querySelectorAll(':not(.gabarit)')[0];
+
+        const  afficherImage = (no)=>{
+            console.log(no)
+            parent.querySelector('img:not(.desactive)').classList.add('desactive');
+            parent.querySelector('img[data-no = "'+ no +'"]').classList.remove('desactive');
+            
+        };
+
+        const enleverPoints = ()=>{
+            let points = document.querySelectorAll('nav.imgGroupe .point');
+            console.log(points)
+            for(let point of points){
+                point.classList.remove('courant');
+            }
+        };
+
+        let imgCourante =  parent.querySelectorAll(':not(.gabarit)')[0];
         imgCourante.classList.remove('desactive');
         pointsParent.querySelector("[data-no ='"+imgCourante.dataset.no +"']").classList.add('courant');
     }

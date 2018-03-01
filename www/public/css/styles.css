@@ -246,6 +246,9 @@ body .conteneurPrinc.projets section.listeProjets nav ul li a:visited,
 body .conteneurPrinc.projets section.listeProjets nav ul li a:active {
   color: #808080;
 }
+body .conteneurPrinc.projets section.listeProjets nav ul li a:hover {
+  cursor: pointer;
+}
 body .conteneurPrinc.projets section.listeProjets nav ul li.courant {
   border-bottom: solid 2px #ff9100;
 }
@@ -296,6 +299,9 @@ body .conteneurPrinc.projets section.projet div.imgGroupe nav.imgGroupe ul li {
 }
 body .conteneurPrinc.projets section.projet div.imgGroupe nav.imgGroupe ul li.courant {
   background-color: #ff0037;
+}
+body .conteneurPrinc.projets section.projet div.imgGroupe nav.imgGroupe ul li:hover {
+  cursor: pointer;
 }
 body .conteneurPrinc.projets section.projet div.imgGroupe .imgConteneur {
   flex: 1 1 65%;
