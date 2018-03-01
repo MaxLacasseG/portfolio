@@ -25,9 +25,9 @@ module.exports = (app) => {
             console.log(resultat)
             data.infosPage = {
                 title: "Maxime Lacasse Germain | Projets web",
-                description: "Lorem",
+                description: "Projets de conception web",
                 robots: "INDEX, FOLLOW",
-                keywords: "lorem"
+                keywords: "web, nodejs, php"
             };
 
             res.render('web', {
@@ -51,9 +51,9 @@ module.exports = (app) => {
 
             data.infosPage = {
                 title: "Maxime Lacasse Germain | Projets de jeux vidéos",
-                description: "Lorem",
+                description: "Projet de jeux vidéo",
                 robots: "INDEX, FOLLOW",
-                keywords: "Lorem"
+                keywords: "programmation, Unity, Phaser"
             };
             res.render('jeux-video', {
                 data: data
@@ -61,16 +61,22 @@ module.exports = (app) => {
         });
     });
 
-    app.get('/multimedias', (req, res) => {
+    app.get('/multimedia', (req, res) => {
         let data = {};
-        data.infosPage = {
-            title: "Maxime Lacasse Germain | Projets multimédias",
-            description: "Lorem",
-            robots: "INDEX, FOLLOW",
-            keywords: "Lorem"
-        };
-        res.render('multimedia', {
-            data: data
+        ProjetColl.find({
+            categorie: "multimedia"
+        }, (err, resultat) => {
+            data.projets = resultat;
+
+            data.infosPage = {
+                title: "Maxime Lacasse Germain | Projets de création numérique",
+                description: "Projet de création numérique",
+                robots: "INDEX, FOLLOW",
+                keywords: "graphisme, photoshop, indesign, illustrator"
+            };
+            res.render('jeux-video', {
+                data: data
+            });
         });
     });
 
