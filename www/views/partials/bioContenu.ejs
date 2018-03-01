@@ -181,11 +181,11 @@
         <section class="contact">
                 <h3 class="titre">Contactez-moi!</h3>
                 <div>
-                    <form action="email" method="POST" onsubmit="return false">
+                    <form action="/traiterCourriel" method="POST">
                         <label for="nom">Nom</label>
                         <input type="text" name="nom" id="nomContact" placeholder="Votre nom" required>
                         <label for="courriel">Courriel</label>
-                        <input type="email" name="courriel" id="courrielContact" placeholder="Votre courriel" required>
+                        <input name="courriel" id="courrielContact" placeholder="Votre courriel" required>
                         <textarea name="msg" id="msgContact" cols="15" rows="10" placeholder="Votre message" required></textarea>
                         <input type="submit" value="Envoyer">
                     </form>

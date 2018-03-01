@@ -1,6 +1,9 @@
 /*jshint esversion: 6 */
-var BDD = require('mongoose')
-var ProjetColl = require('../modeles/projets_modele');
+const BDD = require('mongoose')
+const ProjetColl = require('../modeles/projets_modele');
+const nodemailer = require('nodemailer');
+const { check, validationResult } = require('express-validator/check');
+const { matchedData, sanitize } = require('express-validator/filter');
 
 module.exports = (app) => {
     app.get('/', (req, res) => {
@@ -91,5 +94,39 @@ module.exports = (app) => {
         res.render('bio', {
             data: data
         });
+    });
+
+    app.post('/traiterCourriel',(req, res) => {
+        const errors = validationResult(req);
+        console.log(errors);
+
+        let msg = req.body.msg;
+        let nom = req.body.nom;
+        let fromCourriel = req.body.courriel;
+        console.log(msg, nom, fromCourriel);
+
+        const transporter = nodemailer.createTransport({
+            service: 'gmail',
+            auth: {
+                user: 'lacassegermaindesign@gmail.com',
+                pass: 'MLGDesign!84'
+            }
+        });
+
+        const mailOptions = {
+            from: fromCourriel,
+            to: 'lacassegermaindesign@gmail.com',
+            subject: 'Nouveau courriel de '+ nom,
+            text: msg
+        };
+
+        transporter.sendMail(mailOptions, function (error, info) {
+            if (error) {
+                console.log(error);
+            } else {
+                console.log('Courriel acheminé: ' + info.response);
+            }
+        });
+        res.redirect('/bio');
     });
 }
