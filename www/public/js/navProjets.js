@@ -58,12 +58,12 @@ window.addEventListener('load', () => {
 
         //Gérer les images
         let parent = document.querySelector('.imgConteneur')
-        let imgClone = parent.querySelector('img.gabarit');
-        let liste = parent.querySelectorAll('img:not(.gabarit)');
+        let imgClone = parent.querySelector('div img.gabarit');
+        let listeImg = parent.querySelectorAll('img:not(.gabarit)');
 
         //On enlève les éléments
-        for(let elm of liste){
-            parent.removeChild(elm);
+        for(let img of listeImg){
+            parent.removeChild(img);
         }
 
         //NAVIGATION DES IMAGES
@@ -76,10 +76,11 @@ window.addEventListener('load', () => {
             pointsParent.removeChild(elm);
         }
 
+        let timer;
         //On ajoute les images
         let nbImages = 0;
         for (let image of projet.image) {
-            let img = imgClone.cloneNode();
+            let img = imgClone.cloneNode(true);
             img.src = "img/" + image;
             img.dataset.no = nbImages;
             img.classList.remove('gabarit');
@@ -97,17 +98,23 @@ window.addEventListener('load', () => {
                 afficherImage(evt.target.dataset.no);
                 enleverPoints();
                 evt.target.classList.add("courant");
+                carrousel(evt.target.dataset.no);
             }, false);
 
             nbImages++;
         }
-
+        
         const  afficherImage = (no)=>{
-            console.log(no)
             parent.querySelector('img:not(.desactive)').classList.add('desactive');
             parent.querySelector('img[data-no = "'+ no +'"]').classList.remove('desactive');
             
         };
+
+        const  afficherPoint = (no)=>{
+            document.querySelector('li.point:not(.desactive)').classList.add('desactive');
+            document.querySelector('li.point[data-no = "'+ no +'"]').classList.remove('desactive');
+        };
+
 
         const enleverPoints = ()=>{
             let points = document.querySelectorAll('nav.imgGroupe .point');
@@ -117,6 +124,22 @@ window.addEventListener('load', () => {
             }
         };
 
+        const carrousel = (no)=>{
+            console.log("carrousel démarré")
+            let parent = document.querySelector('.imgConteneur')
+            let listeImg = parent.querySelectorAll('img:not(.gabarit)');
+            window.clearInterval(timer);
+            timer = window.setInterval(function(){
+                if(no > listeImg.length){
+                    no = 0;
+                }else{
+                    no++;
+                };
+                afficherImage(no);
+                enleverPoints();
+                afficherPoint(no);
+            },4000,listeImg, no)
+        }
         let imgCourante =  parent.querySelectorAll(':not(.gabarit)')[0];
         imgCourante.classList.remove('desactive');
         pointsParent.querySelector("[data-no ='"+imgCourante.dataset.no +"']").classList.add('courant');

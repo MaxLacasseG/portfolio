@@ -304,15 +304,17 @@ body .conteneurPrinc.projets section.projet div.imgGroupe nav.imgGroupe ul li:ho
   cursor: pointer;
 }
 body .conteneurPrinc.projets section.projet div.imgGroupe .imgConteneur {
-  flex: 1 1 65%;
   display: flex;
   padding: 5rem 3rem 1rem 1rem;
   align-items: flex-end;
 }
 body .conteneurPrinc.projets section.projet div.imgGroupe .imgConteneur img {
-  max-width: 100%;
-  max-height: 100%;
-  flex: auto;
+  flex: 1 1 auto;
+  width: auto;
+  height: auto;
+  max-width: 650px;
+  max-height: 500px;
+  object-fit: cover;
 }
 body .conteneurPrinc.projets section.projet div.imgGroupe aside {
   flex: 1 0 25%;
