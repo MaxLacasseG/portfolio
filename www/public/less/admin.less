@@ -57,14 +57,14 @@ a {
 }
 
 h1 {
-    .tailleFont(7);
+    .tailleFont(4);
     font-weight: 500;
     letter-spacing: -0.15rem;
     font-family: @fontTitre;
 }
 
 h2 {
-    .tailleFont(5);
+    .tailleFont(3);
     font-weight: 100;
 }
 
@@ -89,6 +89,8 @@ h6 {
 
 a {
     text-decoration: none;
+    color: white;
+    .tailleFont(2);
 }
 
 .gabarit,
@@ -103,7 +105,6 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-
     & .fondAnim {
         background: radial-gradient(circle at center, rgba(51, 51, 51, 0.8) 0%, rgba(0, 0, 0, 0) 45%), url('../img/bg.png');
         position: fixed;
@@ -115,26 +116,26 @@ body {
             height: 100vh;
         }
     }
-
-    & .conteneurPrinc{
+    & .conteneurPrinc.adminConn {
         width: 100%;
         height: 100%;
         display: flex;
         justify-content: center;
         align-items: center;
-        & div.formConteneur{
+        flex-direction: column;
+        & div.formConteneur {
             width: 40vw;
             height: 40vh;
             display: flex;
             flex-direction: column;
-            & .imgConteneur{
+            & .imgConteneur {
                 min-height: 0;
                 min-width: 0;
                 flex: 1 1 30%;
                 display: flex;
                 justify-content: center;
                 align-items: center;
-                & img{
+                & img {
                     flex: 1 1 auto;
                     width: auto;
                     height: auto;
@@ -142,21 +143,115 @@ body {
                     max-height: 150px;
                 }
             }
-            & form{
+            & form {
                 display: flex;
                 flex-direction: column;
                 align-items: center;
-                & *{
+                & * {
                     padding: 1em 0;
                 }
-                & input[type='submit']{
-                    margin-top:1.5em;
+                & input[type='submit'] {
+                    margin-top: 1.5em;
                 }
-                & input[type='text']{
+                & input[type='text'] {
                     min-width: 75%;
                     text-align: center;
                 }
-            } 
+            }
         }
-    }    
+    }
+    & .conteneurPrinc.adminProjets {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        & header {
+            flex: 1 1 15%;
+            max-height: 20vh;
+            padding: 2%;
+            display: flex;
+            align-items: center;
+            & h1 {
+                padding-right: 2em;
+            }
+            & ul {
+                display: flex;
+                & li {
+                    display: flex;
+                    margin: 1em 2em;
+                    & a {
+                        &:hover {
+                            text-decoration: underline;
+                            color: @coulAccent;
+                        }
+                    }
+                }
+            }
+        }
+        & div.tableConteneur {
+            display: flex;
+            padding: 2%;
+            flex-direction: column;
+            & table.sectionProjets {
+                width: 100%;
+                margin-top: 2em;
+                border-collapse: collapse;
+                & thead {
+                    width: 100%;
+                    & tr {
+                        width: 100%;
+                        padding: 3em;
+                        & th {
+                            width: 25%;
+                            padding: 2em;
+                            text-transform: uppercase;
+                            .tailleFont(1.5);
+                            & a:hover{
+                                color: @coulNav2;
+                            }
+                        }
+                    }
+                }
+                & tbody {
+                    width: 100%;
+                    & td {
+                        text-align: center;
+                        padding: 2em;
+                        border-right: 1px solid black;
+                        color: black;
+                        .tailleFont(1.5);
+                        font-weight: 400;
+                    }
+                    & tr:nth-child(odd) {
+                        & td{
+                            background: #ccc;
+                            &.mod, &.del{
+                                background: none;
+                                border:none;
+                                .tailleFont(0.8);
+                                & a:hover{
+                                    color: @coulNav2;
+                                }
+                            }
+                        }
+                        
+                    }
+                    & tr:nth-child(even) {
+                        & td{
+                            background: #aaa;
+                            &.mod, &.del{
+                                background: none;
+                                border: none;
+                                .tailleFont(0.8);
+                                & a:hover{
+                                    color: @coulNav2;
+                                }
+                            }
+                        }
+                    }
+                  
+                }
+            }
+        }
+    }
 }

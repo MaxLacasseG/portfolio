@@ -32,15 +32,15 @@ a {
   font-family: 'Signoria', sans-serif;
 }
 h1 {
-  font-size: 70px;
-  font-size: 7rem;
+  font-size: 40px;
+  font-size: 4rem;
   font-weight: 500;
   letter-spacing: -0.15rem;
   font-family: 'Signoria', sans-serif;
 }
 h2 {
-  font-size: 50px;
-  font-size: 5rem;
+  font-size: 30px;
+  font-size: 3rem;
   font-weight: 100;
 }
 h3 {
@@ -64,6 +64,9 @@ h6 {
 }
 a {
   text-decoration: none;
+  color: white;
+  font-size: 20px;
+  font-size: 2rem;
 }
 .gabarit,
 .desactive {
@@ -87,20 +90,21 @@ body .fondAnim * {
   width: 100vw;
   height: 100vh;
 }
-body .conteneurPrinc {
+body .conteneurPrinc.adminConn {
   width: 100%;
   height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
 }
-body .conteneurPrinc div.formConteneur {
+body .conteneurPrinc.adminConn div.formConteneur {
   width: 40vw;
   height: 40vh;
   display: flex;
   flex-direction: column;
 }
-body .conteneurPrinc div.formConteneur .imgConteneur {
+body .conteneurPrinc.adminConn div.formConteneur .imgConteneur {
   min-height: 0;
   min-width: 0;
   flex: 1 1 30%;
@@ -108,25 +112,119 @@ body .conteneurPrinc div.formConteneur .imgConteneur {
   justify-content: center;
   align-items: center;
 }
-body .conteneurPrinc div.formConteneur .imgConteneur img {
+body .conteneurPrinc.adminConn div.formConteneur .imgConteneur img {
   flex: 1 1 auto;
   width: auto;
   height: auto;
   max-width: 250px;
   max-height: 150px;
 }
-body .conteneurPrinc div.formConteneur form {
+body .conteneurPrinc.adminConn div.formConteneur form {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
-body .conteneurPrinc div.formConteneur form * {
+body .conteneurPrinc.adminConn div.formConteneur form * {
   padding: 1em 0;
 }
-body .conteneurPrinc div.formConteneur form input[type='submit'] {
+body .conteneurPrinc.adminConn div.formConteneur form input[type='submit'] {
   margin-top: 1.5em;
 }
-body .conteneurPrinc div.formConteneur form input[type='text'] {
+body .conteneurPrinc.adminConn div.formConteneur form input[type='text'] {
   min-width: 75%;
   text-align: center;
+}
+body .conteneurPrinc.adminProjets {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+body .conteneurPrinc.adminProjets header {
+  flex: 1 1 15%;
+  max-height: 20vh;
+  padding: 2%;
+  display: flex;
+  align-items: center;
+}
+body .conteneurPrinc.adminProjets header h1 {
+  padding-right: 2em;
+}
+body .conteneurPrinc.adminProjets header ul {
+  display: flex;
+}
+body .conteneurPrinc.adminProjets header ul li {
+  display: flex;
+  margin: 1em 2em;
+}
+body .conteneurPrinc.adminProjets header ul li a:hover {
+  text-decoration: underline;
+  color: #ff0037;
+}
+body .conteneurPrinc.adminProjets div.tableConteneur {
+  display: flex;
+  padding: 2%;
+  flex-direction: column;
+}
+body .conteneurPrinc.adminProjets div.tableConteneur table.sectionProjets {
+  width: 100%;
+  margin-top: 2em;
+  border-collapse: collapse;
+}
+body .conteneurPrinc.adminProjets div.tableConteneur table.sectionProjets thead {
+  width: 100%;
+}
+body .conteneurPrinc.adminProjets div.tableConteneur table.sectionProjets thead tr {
+  width: 100%;
+  padding: 3em;
+}
+body .conteneurPrinc.adminProjets div.tableConteneur table.sectionProjets thead tr th {
+  width: 25%;
+  padding: 2em;
+  text-transform: uppercase;
+  font-size: 15px;
+  font-size: 1.5rem;
+}
+body .conteneurPrinc.adminProjets div.tableConteneur table.sectionProjets thead tr th a:hover {
+  color: #ff9100;
+}
+body .conteneurPrinc.adminProjets div.tableConteneur table.sectionProjets tbody {
+  width: 100%;
+}
+body .conteneurPrinc.adminProjets div.tableConteneur table.sectionProjets tbody td {
+  text-align: center;
+  padding: 2em;
+  border-right: 1px solid black;
+  color: black;
+  font-size: 15px;
+  font-size: 1.5rem;
+  font-weight: 400;
+}
+body .conteneurPrinc.adminProjets div.tableConteneur table.sectionProjets tbody tr:nth-child(odd) td {
+  background: #ccc;
+}
+body .conteneurPrinc.adminProjets div.tableConteneur table.sectionProjets tbody tr:nth-child(odd) td.mod,
+body .conteneurPrinc.adminProjets div.tableConteneur table.sectionProjets tbody tr:nth-child(odd) td.del {
+  background: none;
+  border: none;
+  font-size: 8px;
+  font-size: 0.8rem;
+}
+body .conteneurPrinc.adminProjets div.tableConteneur table.sectionProjets tbody tr:nth-child(odd) td.mod a:hover,
+body .conteneurPrinc.adminProjets div.tableConteneur table.sectionProjets tbody tr:nth-child(odd) td.del a:hover {
+  color: #ff9100;
+}
+body .conteneurPrinc.adminProjets div.tableConteneur table.sectionProjets tbody tr:nth-child(even) td {
+  background: #aaa;
+}
+body .conteneurPrinc.adminProjets div.tableConteneur table.sectionProjets tbody tr:nth-child(even) td.mod,
+body .conteneurPrinc.adminProjets div.tableConteneur table.sectionProjets tbody tr:nth-child(even) td.del {
+  background: none;
+  border: none;
+  font-size: 8px;
+  font-size: 0.8rem;
+}
+body .conteneurPrinc.adminProjets div.tableConteneur table.sectionProjets tbody tr:nth-child(even) td.mod a:hover,
+body .conteneurPrinc.adminProjets div.tableConteneur table.sectionProjets tbody tr:nth-child(even) td.del a:hover {
+  color: #ff9100;
 }
