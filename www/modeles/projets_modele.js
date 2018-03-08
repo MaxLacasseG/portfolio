@@ -12,5 +12,5 @@ let ProjetModele = BDD.Schema({
     "temps": Number
 });
 
-let Projet = BDD.model('Projet', ProjetModele);
+let Projet = BDD.model('Projet', ProjetModele, 'projets');
 module.exports = Projet;

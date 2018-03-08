@@ -4,5 +4,5 @@ let UtilModele = BDD.Schema({
     "mdp": {type:String, required:true},
 });
 
-let Util = BDD.model('admin', UtilModele);
+let Util = BDD.model('Admin', UtilModele, 'admin');
 module.exports = Util;

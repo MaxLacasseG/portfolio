@@ -1,6 +1,7 @@
 /*jshint esversion: 6 */
 const BDD = require('mongoose')
-const ProjetColl = require('../modeles/admin_modele');
+const AdminColl = require('../modeles/admin_modele');
+
 
 module.exports = (app) => {
 
@@ -9,7 +10,15 @@ module.exports = (app) => {
     });
 
     app.post('/adminConnexion', (req, res) => {
-        console.log(req.body);
-        res.redirect('/admin');
+        AdminColl.find({
+            'util': req.body.utilisateur
+        }, (err, resultat) => {
+    
+            if (resultat.length == 0) {
+                res.render('adminConn')
+            }else{
+                res.render('adminProjets');
+            }
+        });
     });
 }

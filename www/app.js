@@ -3,6 +3,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const app = express();
 const projetCtrl = require('./controlers/projets_controleur');
+const adminCtrl = require('./controlers/admin_controleur');
 
 app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({
@@ -21,5 +22,6 @@ db.once('open', function () {
     app.listen(8000, () => {
         console.log('Listening on 8000');
         projetCtrl(app);
+        adminCtrl(app);
     });
 });

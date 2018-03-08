@@ -96,10 +96,6 @@ module.exports = (app) => {
         });
     });
 
-    app.get('/admin', (req, res) => {
-        res.render('admin');
-    });
-
     app.post('/traiterCourriel',(req, res) => {
         const errors = validationResult(req);
         console.log(errors);
