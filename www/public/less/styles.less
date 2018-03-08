@@ -481,4 +481,201 @@ body {
             }
         }
     }
+    & .conteneurPrinc.bio {
+        background: radial-gradient(circle at center, rgba(51, 51, 51, 0.8) 0%, rgba(0, 0, 0, 0) 45%), url('../img/bg.png');
+        flex: 1 1 100%;
+        display: flex;
+        & section.listeProjets {
+            flex: 1 1 15%;
+            min-width: 15vw;
+            max-width: 20vw;
+            padding-top: 5rem;
+            display: flex;
+            flex-direction: column;
+            & nav {
+                flex: 1 1 80%;
+                & .catProjets {
+                    text-transform: uppercase;
+                    text-decoration: underline;
+                    color: white;
+                    padding-left: 3rem;
+                    .tailleFont(2.5);
+                }
+                & ul {
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: space-around;
+                    flex: 1 1 50%;
+                    & li {
+                        display: flex;
+                        justify-content: flex-start;
+                        padding: 1rem 0 0.5rem 5rem;
+                        flex: 0 1 auto;
+                        width: 75%;
+                        & a {
+                            .tailleFont(1.8);
+                            &,
+                            &:visited,
+                            &:active {
+                                color: @coulNav;
+                            }
+                            &:hover {
+                                cursor: pointer;
+                            }
+                        }
+                        &.courant {
+                            border-bottom: solid 2px @coulNav2;
+                            & a {
+                                color: @coulNav2;
+                            }
+                        }
+                    }
+                }
+            }
+            & .retourAccueil {
+                border-top: white solid 3px;
+                width: 20vw;
+                & .logoConteneur {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    padding: 1em 3em;
+                    & a {
+                        flex: 1 1 100%;
+                        max-width: 65%;
+                    }
+                }
+            }
+        }
+        & section.projet {
+            display: flex;
+            flex: 1 1 auto;
+            padding-right: 25%;
+            flex-direction: column;
+            padding-top: 5%;
+            padding-left: calc(10%+1rem);
+            padding-right: 25%;
+            & .desc {
+                flex: 1 1 100%;
+                & .titre {
+                    color: @coulAccent;
+                    .tailleFont(4);
+                }
+                & .descTxt {
+                    .tailleFont(1.5);
+                    line-height: 2.5rem;
+                    letter-spacing: 0.02em;
+                    color: white;
+                    text-align: justify;
+                }
+            }
+            & section {
+                display: none;
+                &.demarche {
+                    display: block;
+                }
+                & p {
+                    color: white;
+                    .tailleFont(1.5);
+                    margin: 1em 0;
+                }
+                & div.compConteneur {
+                    width: 100%;
+                    /* Full width */
+                    height: 10px;
+                    background-color: @coulNav;
+                    /* Grey background */
+                    border-radius: 5px;
+                    & div.competence {
+                        border-radius: 5px;
+                        height: 10px;
+                        background-color: #ff9100;
+                        &[data-value='5'] {
+                            width: 5%;
+                        }
+                        &[data-value='10'] {
+                            width: 10%;
+                        }
+                        &[data-value='15'] {
+                            width: 15%;
+                        }
+                        &[data-value='20'] {
+                            width: 20%;
+                        }
+                        &[data-value='25'] {
+                            width: 25%;
+                        }
+                        &[data-value='30'] {
+                            width: 30%;
+                        }
+                        &[data-value='35'] {
+                            width: 35%;
+                        }
+                        &[data-value='40'] {
+                            width: 40%;
+                        }
+                        &[data-value='50'] {
+                            width: 50%;
+                        }
+                        &[data-value='55'] {
+                            width: 55%;
+                        }
+                        &[data-value='60'] {
+                            width: 60%;
+                        }
+                        &[data-value='65'] {
+                            width: 65%;
+                        }
+                        &[data-value='70'] {
+                            width: 70%;
+                        }
+                        &[data-value='75'] {
+                            width: 75%;
+                        }
+                        &[data-value='80'] {
+                            width: 80%;
+                        }
+                        &[data-value='85'] {
+                            width: 85%;
+                        }
+                        &[data-value='90'] {
+                            width: 90%;
+                        }
+                        &[data-value='95'] {
+                            width: 95%;
+                        }
+                        &[data-value='100'] {
+                            width: 100%;
+                        }
+                    }
+                }
+                &.parcoursPro {
+                    & ul {
+                        & li {
+                            color: @coulNav2;
+                            .tailleFont(1.5);
+                            margin: 2em;
+                        }
+                    }
+                }
+                &.contact {
+                    flex: 1 1 100%;
+                    padding-top: 20%;
+                    & form {
+                        display: flex;
+                        flex-direction: column;
+                        & label {
+                            color: white;
+                        }
+                        & input {
+                            margin-bottom: 1em;
+                            &[type="submit"] {
+                                align-self: flex-start;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
 }
