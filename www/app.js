@@ -13,6 +13,8 @@ app.use(express.static(__dirname + "/public"));
 
 //Connection à la bdd
 const BDD = require('mongoose');
+//let mongodbUri = 'mongodb://mlgportfolio:pass@ds235778.mlab.com:35778/mlgportfolio';
+//BDD.connect(mongodbUri)
 BDD.connect('mongodb://127.0.0.1:27017/portfolio');
 
 let db = BDD.connection;
