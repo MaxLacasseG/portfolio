@@ -49,7 +49,9 @@ window.addEventListener('load', () => {
         document.querySelector("aside .etiquettes").innerText = projet.tags;
         document.querySelector("aside .aime").innerText = projet.like;
         document.querySelector("aside .temps").innerText = projet.temps + " hres";
+        console.log(projet.lien);
         if(projet.lien!= ""){
+            document.querySelector("aside .lienConteneur").style.display = "block";
             document.querySelector("aside .lien a").href = projet.lien;
         }else{
             document.querySelector("aside .lienConteneur").style.display = "none";
