@@ -3,6 +3,9 @@
  * Script servant à l'affichage des images de projets et à la navigation de celles-ci
 */
 window.addEventListener('load', () => {
+    //DÉCLARATION DE VARIABLES GLOBALES
+    let timer;
+
     //===========================================================
     //GESTION DE LA NAVIGATION
     let navas = document.querySelectorAll('a.navProjet');
@@ -29,7 +32,7 @@ window.addEventListener('load', () => {
     //RÉCUPÉRATION DES INFOS
     function rechercherProjet(lien) {
         let url = "/recuperer/" + lien.dataset.id;
-        console.log(url);
+        //console.log(url);
         var ajax = new XMLHttpRequest();
 
         ajax.open("GET", url, true);
@@ -43,13 +46,13 @@ window.addEventListener('load', () => {
     }
     //AFFICHAGE DES INFOS
     function affecterResultat(projet) {
-        console.log(projet);
+        window.clearInterval(timer);
         document.querySelector(".desc h3.titre").innerText = projet.titre;
         document.querySelector(".desc p.descTxt").innerText = projet.description;
         document.querySelector("aside .etiquettes").innerText = projet.tags;
         document.querySelector("aside .aime").innerText = projet.like;
         document.querySelector("aside .temps").innerText = projet.temps + " hres";
-        console.log(projet.lien);
+        
         if(projet.lien!= ""){
             document.querySelector("aside .lienConteneur").style.display = "block";
             document.querySelector("aside .lien a").href = projet.lien;
@@ -78,7 +81,7 @@ window.addEventListener('load', () => {
             pointsParent.removeChild(elm);
         }
 
-        let timer;
+
         //On ajoute les images
         let nbImages = 0;
         for (let image of projet.image) {
@@ -95,11 +98,10 @@ window.addEventListener('load', () => {
             point.classList.remove('gabarit');
             point.classList.remove('desactive');
             pointsParent.appendChild(point);
-            
+
             point.addEventListener('click', (evt)=>{
                 afficherImage(evt.target.dataset.no);
-                enleverPoints();
-                evt.target.classList.add("courant");
+                afficherPoint(evt.target.dataset.no);
                 carrousel(evt.target.dataset.no);
             }, false);
 
@@ -113,8 +115,8 @@ window.addEventListener('load', () => {
         };
 
         const  afficherPoint = (no)=>{
-            document.querySelector('li.point:not(.desactive)').classList.add('desactive');
-            document.querySelector('li.point[data-no = "'+ no +'"]').classList.remove('desactive');
+            document.querySelector('li.point.courant').classList.remove('courant');
+            document.querySelector('li.point[data-no = "'+ no +'"]').classList.add('courant');
         };
 
 
@@ -132,18 +134,21 @@ window.addEventListener('load', () => {
             let listeImg = parent.querySelectorAll('img:not(.gabarit)');
             window.clearInterval(timer);
             timer = window.setInterval(function(){
-                if(no > listeImg.length){
+                if(no == listeImg.length-1){
                     no = 0;
                 }else{
                     no++;
                 };
+                console.log(listeImg.length, no);
                 afficherImage(no);
-                enleverPoints();
                 afficherPoint(no);
-            },4000,listeImg, no)
+                
+            },3000)
         }
+
         let imgCourante =  parent.querySelectorAll(':not(.gabarit)')[0];
         imgCourante.classList.remove('desactive');
         pointsParent.querySelector("[data-no ='"+imgCourante.dataset.no +"']").classList.add('courant');
+        carrousel(0);
     }
 }, false);

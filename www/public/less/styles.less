@@ -366,9 +366,10 @@ body {
                 & .titre {
                     color: @coulAccent;
                     .tailleFont(4);
+                    margin-bottom: 0.5em;
                 }
                 & .descTxt {
-                    .tailleFont(1);
+                    .tailleFont(1.5);
                     line-height: 2rem;
                     color: white;
                     text-align: justify;
@@ -576,8 +577,11 @@ body {
                 }
                 & p {
                     color: white;
-                    .tailleFont(1.5);
-                    margin: 1em 0;
+                    .tailleFont(2);
+                    margin: 0.25em 0;
+                }
+                & .divComp{
+                    margin: 3em 0;
                 }
                 & div.compConteneur {
                     width: 100%;
@@ -590,6 +594,7 @@ body {
                         border-radius: 5px;
                         height: 10px;
                         background-color: #ff9100;
+                        
                         &[data-value='5'] {
                             width: 5%;
                         }

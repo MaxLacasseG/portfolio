@@ -39,6 +39,10 @@ module.exports = (app) => {
         });
     });
 
+    app.get('/verificationGA',(req,res)=>{
+        res.sendFile(__dirname + '/seo/google521ecf1fe145c269.html');
+    });
+
     app.get('/recuperer/:id', (req, res) => {
         ProjetColl.findById(req.params.id, (err, resultat) => {
             res.send(resultat);

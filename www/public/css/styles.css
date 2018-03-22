@@ -359,10 +359,11 @@ body .conteneurPrinc.projets section.projet .desc .titre {
   color: #ff0037;
   font-size: 40px;
   font-size: 4rem;
+  margin-bottom: 0.5em;
 }
 body .conteneurPrinc.projets section.projet .desc .descTxt {
-  font-size: 10px;
-  font-size: 1rem;
+  font-size: 15px;
+  font-size: 1.5rem;
   line-height: 2rem;
   color: white;
   text-align: justify;
@@ -569,9 +570,12 @@ body .conteneurPrinc.bio section.projet section.demarche {
 }
 body .conteneurPrinc.bio section.projet section p {
   color: white;
-  font-size: 15px;
-  font-size: 1.5rem;
-  margin: 1em 0;
+  font-size: 20px;
+  font-size: 2rem;
+  margin: 0.25em 0;
+}
+body .conteneurPrinc.bio section.projet section .divComp {
+  margin: 3em 0;
 }
 body .conteneurPrinc.bio section.projet section div.compConteneur {
   width: 100%;
